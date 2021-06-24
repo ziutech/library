@@ -23,10 +23,6 @@ function addBookToLibrary(title, author, pages, haveRead) {
 	myLibrary.push(new Book(title, author, pages, haveRead));
 }
 
-addBookToLibrary("Hobbit", "Tolkin", 211, true);
-addBookToLibrary("iii", "kl", 10, true);
-addBookToLibrary("hjlw", "kl", 1508, false);
-
 function updateLibrary() {
 	const table = document.querySelector(".records");
 	while (table.firstChild) {

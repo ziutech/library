@@ -18,9 +18,9 @@ h1 {
 }
 
 .bookTable {
-	font-size: 13px;
+	--table-size: 6fr 6fr 2fr 5fr 1fr;
 	display: grid;
-	grid-template-columns: 6fr 6fr 2fr 5fr;
+	grid-template-columns: var(--table-size);
 }
 
 .records {
@@ -32,7 +32,7 @@ h1 {
 .records .row {
 	display: grid;
 	grid-template-rows: 1fr;
-	grid-template-columns: 6fr 6fr 2fr 5fr;
+	grid-template-columns: var(--table-size);
 }
 
 .cell {
@@ -62,7 +62,7 @@ h1 {
 }
 
 .form h4,
-button {
+.form button {
 	text-align: center;
 	grid-column-start: 1;
 	grid-column-end: 3;

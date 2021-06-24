@@ -29,15 +29,26 @@ function updateLibrary() {
 		table.removeChild(table.firstChild);
 	}
 
-	myLibrary.forEach((book) => {
+	myLibrary.forEach((book, index) => {
 		const row = document.createElement("div");
 		row.classList.add("row");
+		row.dataset.index = index;
 		Object.keys(book).forEach((key) => {
 			const cell = document.createElement("div");
 			cell.classList.add(`${key}`, "cell");
 			cell.textContent = book[key];
 			row.appendChild(cell);
 		});
+		const deleteRecord = document.createElement("button");
+		deleteRecord.dataset.index = index;
+		deleteRecord.classList.add("cell");
+		deleteRecord.textContent = "X";
+		deleteRecord.style.height = "27px";
+		deleteRecord.addEventListener("click", () => {
+			myLibrary.splice(deleteRecord.dataset.index, 1);
+			updateLibrary();
+		});
+		row.appendChild(deleteRecord);
 		table.appendChild(row);
 	});
 }

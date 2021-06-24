@@ -14,7 +14,7 @@ Book.prototype.info = function () {
 };
 
 let myLibrary = [];
-
+const library = document.querySelector(".library");
 function addBookToLibrary(title, author, pages, haveRead) {
 	myLibrary.push(new Book(title, author, pages, haveRead));
 }
@@ -23,12 +23,37 @@ addBookToLibrary("Hobbit", "Tolkin", 211, "yes");
 addBookToLibrary("iii", "kl", 10, "yes");
 addBookToLibrary("hjlw", "kl", 1508, "no");
 
-const table = document.querySelector(".bookTable");
-myLibrary.forEach((book) => {
-	Object.keys(book).forEach((key) => {
-		const cell = document.createElement("div");
-		cell.classList.add(`${key}`, "cell");
-		cell.textContent = book[key];
-		table.appendChild(cell);
+function updateLibrary() {
+	const table = document.querySelector(".cells");
+	while (table.firstChild) {
+		table.removeChild(table.firstChild);
+	}
+	myLibrary.forEach((book) => {
+		Object.keys(book).forEach((key) => {
+			const cell = document.createElement("div");
+			cell.classList.add(`${key}`, "cell");
+			cell.textContent = book[key];
+			table.appendChild(cell);
+		});
 	});
+}
+updateLibrary();
+
+const newBookForm = document.querySelector(".form");
+library.removeChild(newBookForm);
+
+const addBook = document.querySelector(".addBook");
+addBook.addEventListener("click", () => {
+	library.appendChild(newBookForm);
+});
+
+const submit = newBookForm.querySelector(".submit");
+submit.addEventListener("click", () => {
+	const title = newBookForm.querySelector(".title").value;
+	const author = newBookForm.querySelector(".author").value;
+	const pages = newBookForm.querySelector(".pages").value;
+	const read = newBookForm.querySelector(".read").value;
+	library.removeChild(newBookForm);
+	addBookToLibrary(title, author, pages, read);
+	updateLibrary();
 });

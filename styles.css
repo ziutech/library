@@ -1,11 +1,12 @@
 body {
+	font-size: 13px;
 	min-width: 750px;
 }
 .library {
 	margin-left: auto;
 	margin-right: auto;
 	padding: 10px;
-	width: 400px;
+	width: 550px;
 	min-height: 200px;
 	background-color: #aff;
 	border: 1px solid #aabbff;
@@ -22,6 +23,12 @@ h1 {
 	grid-template-columns: 6fr 6fr 2fr 5fr;
 }
 
+.cells {
+	all: inherit;
+	grid-column-start: 1;
+	grid-column-end: 6;
+}
+
 .cell {
 	border: 1px solid black;
 	height: 15px;
@@ -34,16 +41,18 @@ h1 {
 	padding: 3px;
 }
 
-/* .form {
-	min-width: 636px;
-	position: absolute;
+.addBook {
+	margin: 10px;
+}
+
+.form {
+	border: 1px solid black;
 	top: 0px;
-	left: 20%;
-	right: 20%;
+	left: 0px;
 	background-color: pink;
 	padding: 10px;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 2fr 1fr;
 }
 
 .form h4,
@@ -51,4 +60,4 @@ button {
 	text-align: center;
 	grid-column-start: 1;
 	grid-column-end: 3;
-} */
+}

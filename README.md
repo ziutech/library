@@ -1,4 +1,5 @@
-Library website from theodinproject.com
+## Library website
+###### Exercise from theodinproject.com
 ###### Made with plain Javascript, HTML and CSS
 
 ### Learning goals:

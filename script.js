@@ -13,15 +13,19 @@ Book.prototype.info = function () {
 	}
 };
 
+Book.prototype.changeReadStatus = function () {
+	this.haveRead = !this.haveRead;
+};
+
 let myLibrary = [];
 const library = document.querySelector(".library");
 function addBookToLibrary(title, author, pages, haveRead) {
 	myLibrary.push(new Book(title, author, pages, haveRead));
 }
 
-addBookToLibrary("Hobbit", "Tolkin", 211, "yes");
-addBookToLibrary("iii", "kl", 10, "yes");
-addBookToLibrary("hjlw", "kl", 1508, "no");
+addBookToLibrary("Hobbit", "Tolkin", 211, true);
+addBookToLibrary("iii", "kl", 10, true);
+addBookToLibrary("hjlw", "kl", 1508, false);
 
 function updateLibrary() {
 	const table = document.querySelector(".records");
@@ -39,11 +43,24 @@ function updateLibrary() {
 			cell.textContent = book[key];
 			row.appendChild(cell);
 		});
+		const markRead = document.createElement("button");
+		markRead.classList.add("cell");
+		markRead.style.height = "22px";
+		markRead.textContent = "./";
+		markRead.style.padding = "0px 4px 2px";
+		markRead.style.float = "right";
+		markRead.addEventListener("click", () => {
+			book.changeReadStatus();
+			updateLibrary();
+		});
+
+		row.querySelector(".haveRead").appendChild(markRead);
+
 		const deleteRecord = document.createElement("button");
 		deleteRecord.dataset.index = index;
 		deleteRecord.classList.add("cell");
 		deleteRecord.textContent = "X";
-		deleteRecord.style.height = "27px";
+		deleteRecord.style.height = "34px";
 		deleteRecord.addEventListener("click", () => {
 			myLibrary.splice(deleteRecord.dataset.index, 1);
 			updateLibrary();
@@ -60,6 +77,10 @@ library.removeChild(newBookForm);
 const addBook = document.querySelector(".addBook");
 addBook.addEventListener("click", () => {
 	library.appendChild(newBookForm);
+	newBookForm.querySelector(".title").value = "";
+	newBookForm.querySelector(".author").value = "";
+	newBookForm.querySelector(".pages").value = "";
+	newBookForm.querySelector(".read").value = "";
 });
 
 const submit = newBookForm.querySelector(".submit");

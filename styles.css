@@ -1,12 +1,12 @@
 body {
-	font-size: 13px;
+	font-size: px;
 	min-width: 750px;
 }
 .library {
 	margin-left: auto;
 	margin-right: auto;
 	padding: 10px;
-	width: 550px;
+	width: 700px;
 	min-height: 200px;
 	background-color: #aff;
 	border: 1px solid #aabbff;
@@ -18,7 +18,7 @@ h1 {
 }
 
 .bookTable {
-	--table-size: 6fr 6fr 2fr 5fr 1fr;
+	--table-size: 6fr 6fr 3fr 4fr 1fr;
 	display: grid;
 	grid-template-columns: var(--table-size);
 }
@@ -37,14 +37,14 @@ h1 {
 
 .cell {
 	border: 1px solid black;
-	height: 15px;
 	padding: 5px;
 }
 
 .index {
 	border: 2px solid black;
-	height: 15px;
-	padding: 3px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
 }
 
 .addBook {

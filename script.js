@@ -24,17 +24,21 @@ addBookToLibrary("iii", "kl", 10, "yes");
 addBookToLibrary("hjlw", "kl", 1508, "no");
 
 function updateLibrary() {
-	const table = document.querySelector(".cells");
+	const table = document.querySelector(".records");
 	while (table.firstChild) {
 		table.removeChild(table.firstChild);
 	}
+
 	myLibrary.forEach((book) => {
+		const row = document.createElement("div");
+		row.classList.add("row");
 		Object.keys(book).forEach((key) => {
 			const cell = document.createElement("div");
 			cell.classList.add(`${key}`, "cell");
 			cell.textContent = book[key];
-			table.appendChild(cell);
+			row.appendChild(cell);
 		});
+		table.appendChild(row);
 	});
 }
 updateLibrary();

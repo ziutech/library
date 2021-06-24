@@ -23,10 +23,16 @@ h1 {
 	grid-template-columns: 6fr 6fr 2fr 5fr;
 }
 
-.cells {
-	all: inherit;
+.records {
+	display: grid;
 	grid-column-start: 1;
-	grid-column-end: 6;
+	grid-column-end: 20;
+}
+
+.records .row {
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: 6fr 6fr 2fr 5fr;
 }
 
 .cell {

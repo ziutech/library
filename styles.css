@@ -1,69 +1,60 @@
 body {
-	font-size: px;
-	min-width: 750px;
+    min-width: 750px;
 }
 .library {
-	margin-left: auto;
-	margin-right: auto;
-	padding: 10px;
-	width: 700px;
-	min-height: 200px;
-	background-color: #aff;
-	border: 1px solid #aabbff;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    width: 700px;
+    min-height: 200px;
+    background-color: #aff;
+    border: 1px solid #aabbff;
 }
 
 h1 {
-	text-align: center;
-	margin-top: 14px;
+    text-align: center;
+    margin-top: 14px;
 }
 
-.bookTable {
-	--table-size: 6fr 6fr 3fr 4fr 1fr;
-	display: grid;
-	grid-template-columns: var(--table-size);
+.record {
+    background-color: #fff888;
+    border-radius: 10px;
+    padding: 15px;
 }
 
-.records {
-	display: grid;
-	grid-column-start: 1;
-	grid-column-end: 20;
-}
-
-.records .row {
-	display: grid;
-	grid-template-rows: 1fr;
-	grid-template-columns: var(--table-size);
+.record p {
+    margin: 0;
 }
 
 .cell {
-	border: 1px solid black;
-	padding: 5px;
+    border: 1px solid black;
+    padding: 5px;
 }
 
 .index {
-	border: 2px solid black;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	text-align: center;
+    border: 2px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
 }
 
 .addBook {
-	margin: 10px;
+    margin: 10px;
 }
 
 .form {
-	border: 1px solid black;
-	top: 0px;
-	left: 0px;
-	background-color: pink;
-	padding: 10px;
-	display: grid;
-	grid-template-columns: 2fr 1fr;
+    border: 1px solid black;
+    top: 0px;
+    left: 0px;
+    background-color: pink;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
 }
 
 .form h4,
 .form button {
-	text-align: center;
-	grid-column-start: 1;
-	grid-column-end: 3;
+    text-align: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }

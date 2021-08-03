@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="styles.css" />
     </head>
     <body>
         <div class="library">
             <h1>Your Library</h1>
             <div class="bookTable">
-                <div class="index">TITLE</div>
-                <div class="index">AUTHOR</div>
-                <div class="index">PAGES</div>
-                <div class="index">HAVE READ</div>
-                <div class="records"></div>
+                <div class="record">
+                    <p>
+                        <span class="author">author</span><br />
+                        by <span class="title">title</span><br />
+                        <span class="pages">158</span> pages
+                    </p>
+                </div>
             </div>
             <button class="addBook">Add book</button>
             <div class="form">
                 <h4>New Book</h4>
                 <div>Title</div>
-                <input class="title">
+                <input class="title" />
                 <div>Author</div>
-                <input class="author">
+                <input class="author" />
                 <div>Number of pages</div>
-                <input class="pages">
+                <input class="pages" />
                 <div>Have you read it already? (yes/no)</div>
-                <input class="read">
+                <input class="read" />
                 <button class="submit">Submit</button>
             </div>
         </div>

@@ -22,8 +22,18 @@ h1 {
     padding: 15px;
 }
 
+.record .author {
+    font-style: italic;
+}
 .record p {
     margin: 0;
+}
+.record h3 {
+    margin: 0;
+}
+.record .delete {
+    font-size: 0.8em;
+    margin-top: 5px;
 }
 
 .cell {

@@ -1,25 +1,49 @@
+:root {
+    --light-cornflower-blue: #8ecae6;
+    --blue-green: #219ebc;
+    --blue-sapphire: #126782;
+    --prussian-blue: #023047;
+    --honey-yellow: #ffb703;
+    --orange-peel: #fd9e02;
+    --orange: #fb8500;
+}
+
 body {
     min-width: 750px;
+    margin: 0px;
 }
-.library {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
-    width: 700px;
-    min-height: 200px;
-    background-color: #aff;
-    border: 1px solid #aabbff;
+
+nav {
+    background-color: var(--blue-sapphire);
+    margin: 0px;
+    border-bottom: groove 12px var(--orange-peel);
 }
 
 h1 {
     text-align: center;
-    margin-top: 14px;
+    margin: 0px;
+    padding: 20px;
+}
+
+.library {
+    min-height: 700px;
+    margin: 0px;
+    padding: 10px;
+    background-color: var(--light-cornflower-blue);
+}
+
+.bookTable {
+    width: 60%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
 }
 
 .record {
-    background-color: #fff888;
+    background-color: var(--blue-green);
     border-radius: 10px;
     padding: 15px;
+    box-shadow: 5px 5px var(--orange-peel);
 }
 
 .record .author {

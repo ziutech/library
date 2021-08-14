@@ -9,14 +9,12 @@
 }
 
 body {
-    min-width: 750px;
     margin: 0px;
 }
 
 nav {
-    background-color: var(--blue-sapphire);
+    background-color: var(--blue-green);
     margin: 0px;
-    border-bottom: groove 12px var(--orange-peel);
 }
 
 h1 {
@@ -26,20 +24,22 @@ h1 {
 }
 
 .library {
-    min-height: 700px;
+    position: relative;
+    min-height: 80vh;
     margin: 0px;
-    padding: 10px;
+    padding: 20px 40px;
     background-color: var(--light-cornflower-blue);
 }
 
 .bookTable {
     width: 60%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 }
 
 .record {
+    z-index: 2;
     background-color: var(--blue-green);
     border-radius: 10px;
     padding: 15px;
@@ -49,20 +49,18 @@ h1 {
 .record .author {
     font-style: italic;
 }
+
 .record p {
     margin: 0;
 }
+
 .record h3 {
     margin: 0;
 }
+
 .record .delete {
     font-size: 0.8em;
     margin-top: 5px;
-}
-
-.cell {
-    border: 1px solid black;
-    padding: 5px;
 }
 
 .index {
@@ -73,14 +71,21 @@ h1 {
 }
 
 .addBook {
-    margin: 10px;
+    padding-top: 2px;
+}
+
+.libraryTriangle {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    border-bottom: solid 250px var(--orange-peel);
+    border-left: 100vw solid rgba(0, 0, 0, 0);
+    z-index: 1;
 }
 
 .form {
-    border: 1px solid black;
-    top: 0px;
-    left: 0px;
-    background-color: pink;
+    outline: 12px groove var(--orange-peel);
+    background-color: var(--blue-green);
     padding: 10px;
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -91,4 +96,9 @@ h1 {
     text-align: center;
     grid-column-start: 1;
     grid-column-end: 3;
+}
+
+footer {
+    background-color: var(--orange-peel);
+    height: 8vh;
 }

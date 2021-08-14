@@ -68,7 +68,7 @@ function updateLibrary() {
 updateLibrary();
 
 const newBookForm = document.querySelector(".form");
-library.removeChild(newBookForm);
+// library.removeChild(newBookForm);
 
 const addBook = document.querySelector(".addBook");
 addBook.addEventListener("click", () => {

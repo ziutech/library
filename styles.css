@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;700&display=swap");
 :root {
     --light-cornflower-blue: #8ecae6;
     --blue-green: #219ebc;
@@ -10,17 +11,29 @@
 
 body {
     margin: 0px;
+    overflow-y: hidden;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: whitesmoke;
 }
 
-nav {
-    background-color: var(--blue-green);
+header {
+    height: 100px;
+    background: linear-gradient(
+        180deg,
+        var(--prussian-blue) 90%,
+        var(--light-cornflower-blue) 100%
+    );
+    background-color: var(--prussian-blue);
     margin: 0px;
 }
 
 h1 {
-    text-align: center;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 2.3em;
     margin: 0px;
-    padding: 20px;
+    padding: 20px 40px;
 }
 
 .library {
@@ -28,22 +41,28 @@ h1 {
     min-height: 80vh;
     margin: 0px;
     padding: 20px 40px;
-    background-color: var(--light-cornflower-blue);
+    background: linear-gradient(
+        177deg,
+        var(--light-cornflower-blue) 83%,
+        var(--prussian-blue) 85%
+    );
 }
 
 .bookTable {
-    width: 60%;
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
 }
 
 .record {
-    z-index: 2;
-    background-color: var(--blue-green);
+    background-color: var(--blue-sapphire);
     border-radius: 10px;
     padding: 15px;
-    box-shadow: 5px 5px var(--orange-peel);
+    box-shadow: 5px 5px var(--honey-yellow);
+    display: flex;
+    justify-content: space-between;
+    /* align-items: flex-start; */
 }
 
 .record .author {
@@ -58,9 +77,26 @@ h1 {
     margin: 0;
 }
 
-.record .delete {
-    font-size: 0.8em;
-    margin-top: 5px;
+.record .buttons {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    padding-bottom: 5px;
+}
+
+.markRead {
+    padding: 0px;
+    margin: 0px;
+}
+
+.delete {
+    background: none;
+    border: none;
+}
+
+.delete:hover {
+    transform: rotate(45deg);
+    transition-duration: 0.5s;
 }
 
 .index {
@@ -78,9 +114,12 @@ h1 {
     position: absolute;
     bottom: 0px;
     right: 0px;
-    border-bottom: solid 250px var(--orange-peel);
+    height: 200px;
+    width: 100%;
+    /*border-bottom: solid 250px var(--orange-peel);
     border-left: 100vw solid rgba(0, 0, 0, 0);
-    z-index: 1;
+    z-index: 1; */
+    background: rgb(33, 158, 188);
 }
 
 .form {
@@ -99,6 +138,6 @@ h1 {
 }
 
 footer {
-    background-color: var(--orange-peel);
+    background-color: var(--prussian-blue);
     height: 8vh;
 }

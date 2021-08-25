@@ -50,12 +50,14 @@ h1 {
 
 .bookTable {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    flex-direction: row;
     gap: 10px;
 }
 
 .record {
+    width: 200px;
+    min-height: 100px;
     background-color: var(--blue-sapphire);
     border-radius: 10px;
     padding: 15px;
@@ -81,12 +83,39 @@ h1 {
     display: flex;
     flex-direction: column-reverse;
     justify-content: space-between;
-    padding-bottom: 5px;
+    align-items: center;
 }
 
 .markRead {
-    padding: 0px;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    background-color: var(--orange);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0px;
+}
+
+.markRead::after {
+    font-family: "Font Awesome 5 Free";
+    font-size: 15px;
+    font-weight: 900;
+    content: "\f00c";
+    display: none;
+}
+
+.markRead:hover {
+    background-color: #e87c00;
+}
+
+.markRead:checked {
+    background-color: #ff9720;
+}
+.markRead:checked::after {
+    display: block;
 }
 
 .delete {
@@ -94,9 +123,11 @@ h1 {
     border: none;
 }
 
-.delete:hover {
-    transform: rotate(45deg);
-    transition-duration: 0.5s;
+.delete img {
+    border-radius: 50%;
+}
+.delete:hover img {
+    background-color: rgb(90, 100, 100, 255);
 }
 
 .index {

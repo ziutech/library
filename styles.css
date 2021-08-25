@@ -1,69 +1,174 @@
-body {
-	font-size: px;
-	min-width: 750px;
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;700&display=swap");
+:root {
+    --light-cornflower-blue: #8ecae6;
+    --blue-green: #219ebc;
+    --blue-sapphire: #126782;
+    --prussian-blue: #023047;
+    --honey-yellow: #ffb703;
+    --orange-peel: #fd9e02;
+    --orange: #fb8500;
 }
-.library {
-	margin-left: auto;
-	margin-right: auto;
-	padding: 10px;
-	width: 700px;
-	min-height: 200px;
-	background-color: #aff;
-	border: 1px solid #aabbff;
+
+body {
+    margin: 0px;
+    overflow-y: hidden;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: whitesmoke;
+}
+
+header {
+    height: 100px;
+    background: linear-gradient(
+        180deg,
+        var(--prussian-blue) 90%,
+        var(--light-cornflower-blue) 100%
+    );
+    background-color: var(--prussian-blue);
+    margin: 0px;
 }
 
 h1 {
-	text-align: center;
-	margin-top: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 2.3em;
+    margin: 0px;
+    padding: 20px 40px;
+}
+
+.library {
+    position: relative;
+    min-height: 80vh;
+    margin: 0px;
+    padding: 20px 40px;
+    background: linear-gradient(
+        177deg,
+        var(--light-cornflower-blue) 83%,
+        var(--prussian-blue) 85%
+    );
 }
 
 .bookTable {
-	--table-size: 6fr 6fr 3fr 4fr 1fr;
-	display: grid;
-	grid-template-columns: var(--table-size);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
-.records {
-	display: grid;
-	grid-column-start: 1;
-	grid-column-end: 20;
+.record {
+    width: 200px;
+    min-height: 100px;
+    background-color: var(--blue-sapphire);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 5px 5px var(--honey-yellow);
+    display: flex;
+    justify-content: space-between;
+    /* align-items: flex-start; */
 }
 
-.records .row {
-	display: grid;
-	grid-template-rows: 1fr;
-	grid-template-columns: var(--table-size);
+.record .author {
+    font-style: italic;
 }
 
-.cell {
-	border: 1px solid black;
-	padding: 5px;
+.record p {
+    margin: 0;
+}
+
+.record h3 {
+    margin: 0;
+}
+
+.record .buttons {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.markRead {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    background-color: var(--orange);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+}
+
+.markRead::after {
+    font-family: "Font Awesome 5 Free";
+    font-size: 15px;
+    font-weight: 900;
+    content: "\f00c";
+    display: none;
+}
+
+.markRead:hover {
+    background-color: #e87c00;
+}
+
+.markRead:checked {
+    background-color: #ff9720;
+}
+.markRead:checked::after {
+    display: block;
+}
+
+.delete {
+    background: none;
+    border: none;
+}
+
+.delete img {
+    border-radius: 50%;
+}
+.delete:hover img {
+    background-color: rgb(90, 100, 100, 255);
 }
 
 .index {
-	border: 2px solid black;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	text-align: center;
+    border: 2px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
 }
 
 .addBook {
-	margin: 10px;
+    padding-top: 2px;
+}
+
+.libraryTriangle {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    height: 200px;
+    width: 100%;
+    /*border-bottom: solid 250px var(--orange-peel);
+    border-left: 100vw solid rgba(0, 0, 0, 0);
+    z-index: 1; */
+    background: rgb(33, 158, 188);
 }
 
 .form {
-	border: 1px solid black;
-	top: 0px;
-	left: 0px;
-	background-color: pink;
-	padding: 10px;
-	display: grid;
-	grid-template-columns: 2fr 1fr;
+    outline: 12px groove var(--orange-peel);
+    background-color: var(--blue-green);
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
 }
 
 .form h4,
 .form button {
-	text-align: center;
-	grid-column-start: 1;
-	grid-column-end: 3;
+    text-align: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+footer {
+    background-color: var(--prussian-blue);
+    height: 8vh;
 }

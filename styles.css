@@ -51,8 +51,9 @@ h1 {
 .bookTable {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     gap: 10px;
+    justify-content: flex-end;
 }
 
 .record {
@@ -69,10 +70,6 @@ h1 {
 
 .record .author {
     font-style: italic;
-}
-
-.record p {
-    margin: 0;
 }
 
 .record h3 {

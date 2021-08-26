@@ -1,56 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-</head>
-<body>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header>
+            <h1>Your library</h1>
+        </header>
 
-<header>
-    <h1>Your library</h1>
-</header>
+        <div class="library">
+            <div class="bookTable">
+                <div class="record">
 
-<div class="library">
-    <div class="bookTable">
+                    <span>
+                        <h3 class="title">title</h3>
+                        by<span class="author">author</span>
+                        <span class="pages">158</span> pages<br />
+                        <span class="readStatus">to read</span>
+                    </span>
 
-        <div class="record">
+                    <div class="buttons">
+                        <input type="checkbox" class="markRead"></input>
+                        <button class="delete"><img src="1x/outline_close_white_24dp.png"></button>
+                    </div>
+                </div>
 
-            <span>
-                <h3 class="title">title</h3>
-                by <span class="author">author</span><br />
-                <span class="pages">158</span> pages<br />
-                <span class="readStatus">to read</span>
-            </span>
-
-            <div class="buttons">
-                <input type="checkbox" class="markRead"></input>
-                <button class="delete"><img src="1x/outline_close_white_24dp.png"></button>
+                <div class="addBook">
+                    <span class="material-icons-outlined">
+                        <img src="add_box_white_48dp.svg" />
+                    </span>
+                </div>
             </div>
         </div>
-
-        <div class="record">
-
-            <span>
-                <h3 class="title">title</h3>
-                by <span class="author">author</span><br />
-                <span class="pages">158</span> pages
-            </span>
-
-            <div class="buttons">
-                <input type="checkbox" class="markRead"></input>
-                <button class="delete"><img src="1x/outline_close_white_24dp.png"></button>
-            </div>
-        </div>
-
-        <div class="addBook">
-            <span class="material-icons-outlined">
-                <img src="add_box_white_48dp.svg">
-            </span>
-        </div>
-    </div>
-</div>
-<footer></footer>
-    <!-- <div class="form">
+        <footer></footer>
+        <!-- <div class="form">
         <h4>New Book</h4>
         <div>Title</div>
         <input class="title" />
@@ -63,6 +50,6 @@
         <button class="submit">Submit</button>
     </div> -->
 
-    <!-- <script src="script.js"></script> -->
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>

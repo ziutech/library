@@ -24,18 +24,17 @@ function addBookToLibrary(title, author, pages, haveRead) {
 }
 
 addBookToLibrary("asgfa", "ds", 200, true);
+addBookToLibrary("as", "ds", 200, true);
+addBookToLibrary("ffwadf", "ds", 200, true);
+addBookToLibrary("ff", "ds", 200, true);
+addBookToLibrary("hga", "ds", 200, true);
 
 const table = document.querySelector(".bookTable");
-table.removeChild(table.firstChild);
 function updateLibrary() {
-    // while (table.firstChild) {
-    //     if (table.firstChild.classList.contains("addBook")) break;
-    //     table.removeChild(table.firstChild);
-    // }
-
-    // creating a doc element for each book in library
+    [...table.querySelectorAll(".record")].forEach((record) =>
+        table.removeChild(record)
+    );
     myLibrary.forEach((book, index) => {
-        table.removeChild(table.firstChild);
         const record = document.createElement("div");
         record.classList.add("record");
 
@@ -74,10 +73,19 @@ function updateLibrary() {
         checkbox.type = "checkbox";
         checkbox.classList.add("markRead");
         if (book.readStatus) checkbox.checked = true;
+        checkbox.addEventListener("click", () => {
+            book.changeReadStatus();
+            updateLibrary();
+        });
 
         buttons.appendChild(checkbox);
 
         const deleteBook = document.createElement("button");
+        deleteBook.addEventListener("click", () => {
+            console.log(index);
+            myLibrary.splice(index, 1);
+            updateLibrary();
+        });
         deleteBook.classList.add("delete");
 
         const img = document.createElement("img");

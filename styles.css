@@ -51,10 +51,9 @@ h1 {
 .bookTable {
     width: 100%;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: flex-end;
 }
 
 .record {
@@ -63,7 +62,7 @@ h1 {
     background-color: var(--blue-sapphire);
     border-radius: 10px;
     padding: 15px;
-    box-shadow: 5px 5px var(--honey-yellow);
+    box-shadow: 3px 3px var(--honey-yellow);
     display: flex;
     justify-content: space-between;
     /* align-items: flex-start; */
@@ -137,6 +136,19 @@ h1 {
 
 .addBook {
     padding-top: 2px;
+}
+
+.addBook button {
+    background: none;
+    border: none;
+}
+
+.addBook button img {
+    border-radius: 10px;
+}
+
+.addBook button:hover img {
+    background-color: var(--orange-peel);
 }
 
 .libraryTriangle {

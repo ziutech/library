@@ -31,9 +31,9 @@ addBookToLibrary("hga", "ds", 200, true);
 
 const table = document.querySelector(".bookTable");
 function updateLibrary() {
-    [...table.querySelectorAll(".record")].forEach((record) =>
-        table.removeChild(record)
-    );
+    while (table.firstChild) {
+        table.removeChild(table.firstChild);
+    }
     myLibrary.forEach((book, index) => {
         const record = document.createElement("div");
         record.classList.add("record");
@@ -88,9 +88,9 @@ function updateLibrary() {
         });
         deleteBook.classList.add("delete");
 
-        const img = document.createElement("img");
-        img.src = "1x/outline_close_white_24dp.png";
-        deleteBook.appendChild(img);
+        const crossImg = document.createElement("img");
+        crossImg.src = "1x/outline_close_white_24dp.png";
+        deleteBook.appendChild(crossImg);
         buttons.appendChild(deleteBook);
 
         record.appendChild(buttons);
@@ -98,6 +98,15 @@ function updateLibrary() {
         record.dataset.index = index;
         table.appendChild(record);
     });
+
+    const addBook = document.createElement("div");
+    addBook.classList.add("addBook");
+    const button = document.createElement("button");
+    const addImg = document.createElement("img");
+    addImg.src = "add_box_white_48dp.svg";
+    button.appendChild(addImg);
+    addBook.appendChild(button);
+    table.appendChild(addBook);
 }
 updateLibrary();
 

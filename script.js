@@ -15,6 +15,8 @@ function addBookToLibrary(title, author, pages, haveRead) {
     myLibrary.push(new Book(title, author, pages, haveRead));
 }
 
+const checkDuplicates = () => {};
+
 const table = document.querySelector(".bookTable");
 function updateLibrary() {
     while (table.firstChild) {
@@ -104,7 +106,8 @@ const showForm = () => {
     const overlay = document.querySelector(".overlay");
     overlay.style.display = "block";
 
-    const form = document.createElement("form");
+    const form = document.createElement("div");
+    form.classList.add("form");
     form.innerHTML = `<h4>New Book</h4>
             <div>Title</div>
             <input type="text" id="title" />
@@ -120,9 +123,7 @@ const showForm = () => {
     submit.classList.add("submit");
     submit.textContent = "OK";
     submit.addEventListener("click", () => {
-        submitForm();
-        form.remove();
-        overlay.style.display = "none";
+        submitForm(form);
         updateLibrary();
     });
     form.appendChild(submit);
@@ -130,13 +131,39 @@ const showForm = () => {
     document.querySelector("body").appendChild(form);
 };
 
-const submitForm = () => {
+const submitForm = (form) => {
     const title = document.getElementById("title").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
     const isRead = document.getElementById("read").checked;
+    if (checkForInputError(title, author, pages, isRead, form)) return;
+
     addBookToLibrary(title, author, pages, isRead);
+    form.remove();
+    document.querySelector(".overlay").style.display = "none";
 };
 
 //error correction
-//
+const checkForInputError = (t, a, p, r, form) => {
+    form.querySelectorAll(".error").forEach((e) => form.removeChild(e));
+
+    let errors = 0;
+    if (!t || !a || !p) {
+        showError("Text fields can't be empty", form);
+        errors++;
+    }
+    if (isNaN(p)) {
+        console.log(1);
+        showError("Page count has to be a number", form);
+        errors++;
+    }
+    return errors;
+};
+
+const showError = (e, form) => {
+    const error = document.createElement("div");
+    error.classList.add("error");
+    error.textContent = e;
+    form.appendChild(error);
+};
+//checking for duplicate entries

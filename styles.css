@@ -180,7 +180,7 @@ main {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-form {
+.form {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -191,22 +191,22 @@ form {
     padding: 15px;
 }
 
-form h4 {
+.form h4 {
     font-size: 25px;
     margin-top: 0px;
     margin-bottom: 5px;
 }
 
-form input[type="text"] {
+.form input[type="text"] {
     border-radius: 5px;
     border: none;
     margin-bottom: 10px;
 }
-form #read {
+.form #read {
     float: right;
 }
 
-form .submit {
+.form .submit {
     appearance: none;
     -webkit-appearance: none;
     background-color: var(--blue-green);
@@ -221,13 +221,16 @@ form .submit {
     margin-top: 10px;
 }
 
-form .submit:hover {
+.form .submit:hover {
     background-color: #37a7c2;
 }
-form .submit:active {
+.form .submit:active {
     background-color: #1d8ea9;
 }
 
+.error {
+    color: var(--orange);
+}
 footer {
     background-color: var(--prussian-blue);
     height: 8vh;

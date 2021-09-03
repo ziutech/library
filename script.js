@@ -5,14 +5,6 @@ function Book(title, author, pages, haveRead) {
     this.readStatus = haveRead;
 }
 
-Book.prototype.info = function () {
-    if (this.readStatus) {
-        return `${this.title} by ${this.author}, ${this.pages}, has been read already`;
-    } else {
-        return `${this.title} by ${this.author}, ${this.pages}, has been read already`;
-    }
-};
-
 Book.prototype.changeReadStatus = function () {
     this.readStatus = !this.readStatus;
 };
@@ -23,17 +15,12 @@ function addBookToLibrary(title, author, pages, haveRead) {
     myLibrary.push(new Book(title, author, pages, haveRead));
 }
 
-addBookToLibrary("asgfa", "ds", 200, true);
-addBookToLibrary("as", "ds", 200, true);
-addBookToLibrary("ffwadf", "ds", 200, true);
-addBookToLibrary("ff", "ds", 200, true);
-addBookToLibrary("hga", "ds", 200, true);
-
 const table = document.querySelector(".bookTable");
 function updateLibrary() {
     while (table.firstChild) {
         table.removeChild(table.firstChild);
     }
+
     myLibrary.forEach((book, index) => {
         const record = document.createElement("div");
         record.classList.add("record");
@@ -102,6 +89,9 @@ function updateLibrary() {
     const addBook = document.createElement("div");
     addBook.classList.add("addBook");
     const button = document.createElement("button");
+    button.addEventListener("click", () => {
+        showForm();
+    });
     const addImg = document.createElement("img");
     addImg.src = "add_box_white_48dp.svg";
     button.appendChild(addImg);
@@ -110,24 +100,43 @@ function updateLibrary() {
 }
 updateLibrary();
 
-// library.removeChild(newBookForm);
+const showForm = () => {
+    const overlay = document.querySelector(".overlay");
+    overlay.style.display = "block";
 
-const addBook = document.querySelector(".addBook");
-addBook.addEventListener("click", () => {
-    library.appendChild(newBookForm);
-    newBookForm.querySelector(".title").value = "";
-    newBookForm.querySelector(".author").value = "";
-    newBookForm.querySelector(".pages").value = "";
-    newBookForm.querySelector(".read").value = "";
-});
+    const form = document.createElement("form");
+    form.innerHTML = `<h4>New Book</h4>
+            <div>Title</div>
+            <input type="text" id="title" />
+            <div>Author</div>
+            <input type="text" id="author" />
+            <div>Number of pages</div>
+            <input type="text" id="pages" />
+            <div>
+                Have you read it?
+                <input type="checkbox" id="read" />
+            </div>`;
+    const submit = document.createElement("button");
+    submit.classList.add("submit");
+    submit.textContent = "OK";
+    submit.addEventListener("click", () => {
+        submitForm();
+        form.remove();
+        overlay.style.display = "none";
+        updateLibrary();
+    });
+    form.appendChild(submit);
 
-const submit = newBookForm.querySelector(".submit");
-submit.addEventListener("click", () => {
-    const title = newBookForm.querySelector(".title").value;
-    const author = newBookForm.querySelector(".author").value;
-    const pages = newBookForm.querySelector(".pages").value;
-    const read = newBookForm.querySelector(".read").value;
-    library.removeChild(newBookForm);
-    addBookToLibrary(title, author, pages, read);
-    updateLibrary();
-});
+    document.querySelector("body").appendChild(form);
+};
+
+const submitForm = () => {
+    const title = document.getElementById("title").value;
+    const author = document.getElementById("author").value;
+    const pages = document.getElementById("pages").value;
+    const isRead = document.getElementById("read").checked;
+    addBookToLibrary(title, author, pages, isRead);
+};
+
+//error correction
+//

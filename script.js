@@ -10,13 +10,22 @@ Book.prototype.changeReadStatus = function () {
 };
 
 let myLibrary = [];
-const library = document.querySelector(".library");
-function addBookToLibrary(title, author, pages, haveRead) {
-    myLibrary.push(new Book(title, author, pages, haveRead));
+function addBookToLibrary(title, author, pages, isRead) {
+    const book = new Book(title, author, pages, isRead);
+    if (checkDuplicates(book)) {
+        showError("This book entry already exists");
+        return 0;
+    }
+    myLibrary.push(book);
+    return 1;
 }
 
-const checkDuplicates = () => {};
+const checkDuplicates = (book) => {
+    book = JSON.stringify(book);
+    return myLibrary.some((e) => JSON.stringify(e) === book);
+};
 
+addBookToLibrary("Hobbit", "Tolkien", "2", false);
 const table = document.querySelector(".bookTable");
 function updateLibrary() {
     while (table.firstChild) {
@@ -52,11 +61,9 @@ function updateLibrary() {
         readStatus.classList.add("readStatus");
         if (book["readStatus"]) readStatus.textContent = "read";
         else readStatus.textContent = "to read";
-        bookDetails.appendChild(readStatus);
-        record.appendChild(bookDetails);
 
-        const buttons = document.createElement("div");
-        buttons.classList.add("buttons");
+        //const buttons = document.createElement("div");
+        // buttons.classList.add("buttons");
 
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
@@ -66,23 +73,25 @@ function updateLibrary() {
             book.changeReadStatus();
             updateLibrary();
         });
-
-        buttons.appendChild(checkbox);
+        readStatus.appendChild(checkbox);
+        bookDetails.appendChild(readStatus);
+        record.appendChild(bookDetails);
+        // buttons.appendChild(checkbox);
 
         const deleteBook = document.createElement("button");
         deleteBook.addEventListener("click", () => {
-            console.log(index);
             myLibrary.splice(index, 1);
             updateLibrary();
         });
-        deleteBook.classList.add("delete");
+        deleteBook.classList.add("delete", "upper-right");
 
         const crossImg = document.createElement("img");
         crossImg.src = "1x/outline_close_white_24dp.png";
         deleteBook.appendChild(crossImg);
-        buttons.appendChild(deleteBook);
+        // buttons.appendChild(deleteBook);
 
-        record.appendChild(buttons);
+        // record.appendChild(buttons);
+        record.appendChild(deleteBook);
 
         record.dataset.index = index;
         table.appendChild(record);
@@ -108,8 +117,24 @@ const showForm = () => {
 
     const form = document.createElement("div");
     form.classList.add("form");
-    form.innerHTML = `<h4>New Book</h4>
-            <div>Title</div>
+
+    const cancel = document.createElement("button");
+    cancel.classList.add("delete", "upper-right");
+    cancel.innerHTML = '<img src="1x/outline_close_white_24dp.png">';
+    cancel.addEventListener("click", () => {
+        removeForm();
+    });
+    form.innerHTML = `<h4>New Book</h4>`;
+
+    const submit = document.createElement("button");
+    submit.classList.add("submit");
+    submit.textContent = "OK";
+    submit.addEventListener("click", () => {
+        submitForm(form);
+        updateLibrary();
+    });
+
+    form.innerHTML += `<div>Title</div>
             <input type="text" id="title" />
             <div>Author</div>
             <input type="text" id="author" />
@@ -119,16 +144,14 @@ const showForm = () => {
                 Have you read it?
                 <input type="checkbox" id="read" />
             </div>`;
-    const submit = document.createElement("button");
-    submit.classList.add("submit");
-    submit.textContent = "OK";
-    submit.addEventListener("click", () => {
-        submitForm(form);
-        updateLibrary();
-    });
     form.appendChild(submit);
+    form.appendChild(cancel);
 
     document.querySelector("body").appendChild(form);
+};
+const removeForm = () => {
+    document.querySelector(".form").remove();
+    document.querySelector(".overlay").style.display = "none";
 };
 
 const submitForm = (form) => {
@@ -137,10 +160,7 @@ const submitForm = (form) => {
     const pages = document.getElementById("pages").value;
     const isRead = document.getElementById("read").checked;
     if (checkForInputError(title, author, pages, isRead, form)) return;
-
-    addBookToLibrary(title, author, pages, isRead);
-    form.remove();
-    document.querySelector(".overlay").style.display = "none";
+    if (addBookToLibrary(title, author, pages, isRead)) removeForm(form);
 };
 
 //error correction
@@ -149,21 +169,19 @@ const checkForInputError = (t, a, p, r, form) => {
 
     let errors = 0;
     if (!t || !a || !p) {
-        showError("Text fields can't be empty", form);
+        showError("Text fields can't be empty");
         errors++;
     }
     if (isNaN(p)) {
-        console.log(1);
-        showError("Page count has to be a number", form);
+        showError("Page count has to be a number");
         errors++;
     }
     return errors;
 };
 
-const showError = (e, form) => {
+const showError = (e) => {
     const error = document.createElement("div");
     error.classList.add("error");
     error.textContent = e;
-    form.appendChild(error);
+    document.querySelector(".form").appendChild(error);
 };
-//checking for duplicate entries
